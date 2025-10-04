@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>DiagnosticGUI</class>
+ <widget class="QWidget" name="DiagnosticGUI">
+  <property name="windowTitle">
+   <string>HES - ESC Diagnostic Tester</string>
+  </property>
+  <property name="geometry">
+   <rect><x>0</x><y>0</y><width>1500</width><height>800</height></rect>
+  </property>
+  <layout class="QVBoxLayout" name="mainLayout">
+   <item>
+    <layout class="QHBoxLayout" name="headerLayout">
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation"><enum>Qt::Horizontal</enum></property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QLabel" name="logo_label">
+       <property name="pixmap"><pixmap>../assets/logo.png</pixmap></property>
+       <property name="scaledContents"><bool>true</bool></property>
+       <property name="minimumSize"><size><width>80</width><height>50</height></size></property>
+       <property name="maximumSize"><size><width>80</width><height>50</height></size></property>
+       <property name="alignment"><set>Qt::AlignRight|Qt::AlignVCenter</set></property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QTabWidget" name="tabs">
+
+     <!-- Actuators tab -->
+     <widget class="QWidget" name="tab_actuators">
+      <attribute name="title"><string>Actuators</string></attribute>
+      <layout class="QVBoxLayout" name="layout_tab_actuators">
+       <item>
+        <layout class="QHBoxLayout" name="layout_dropdown_button">
+         <item>
+          <widget class="QComboBox" name="actuator_select"/>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_activate">
+           <property name="text"><string>Activate (1s)</string></property>
+           <property name="minimumSize"><size><width>120</width><height>40</height></size></property>
+           <property name="font"><font><pointsize>12</pointsize><bold>true</bold></font></property>
+           <property name="styleSheet"><string>background-color: lightgreen;</string></property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btn_run_all">
+         <property name="text"><string>EOL Actuator Test</string></property>
+         <property name="minimumSize"><size><width>120</width><height>40</height></size></property>
+         <property name="font"><font><pointsize>12</pointsize><bold>true</bold></font></property>
+         <property name="styleSheet"><string>background-color: lightgreen;</string></property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTableWidget" name="actuator_table">
+         <property name="columnCount"><number>2</number></property>
+         <column><property name="text"><string>Actuator</string></property></column>
+         <column><property name="text"><string>Status</string></property></column>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+
+     <!-- Monitoring tab -->
+     <widget class="QWidget" name="tab_monitoring">
+      <attribute name="title"><string>Live Monitoring</string></attribute>
+      <layout class="QVBoxLayout" name="layout_tab_monitoring">
+       <item>
+        <layout class="QHBoxLayout" name="layout_monitor_split">
+         <item>
+          <layout class="QVBoxLayout" name="graph_layout"/>
+         </item>
+         <item>
+          <widget class="QScrollArea" name="scroll_signals">
+           <property name="widgetResizable"><bool>true</bool></property>
+           <widget class="QWidget" name="scrollAreaWidgetContents">
+            <layout class="QGridLayout" name="grid_signals">
+             <property name="horizontalSpacing"><number>40</number></property>
+             <property name="verticalSpacing"><number>10</number></property>
+            </layout>
+           </widget>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="layout_monitor_buttons">
+         <item>
+          <widget class="QPushButton" name="btn_start_monitoring">
+           <property name="text"><string>Start Monitoring</string></property>
+           <property name="minimumSize"><size><width>120</width><height>40</height></size></property>
+           <property name="font"><font><pointsize>12</pointsize><bold>true</bold></font></property>
+           <property name="styleSheet"><string>background-color: lightgreen;</string></property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_stop_monitoring">
+           <property name="text"><string>Stop Monitoring</string></property>
+           <property name="minimumSize"><size><width>120</width><height>40</height></size></property>
+           <property name="font"><font><pointsize>12</pointsize><bold>true</bold></font></property>
+           <property name="styleSheet"><string>background-color: lightcoral;</string></property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+
+         <!-- Calibration tab -->
+<widget class="QWidget" name="tab_calibration">
+ <attribute name="title"><string>Calibration</string></attribute>
+ <layout class="QVBoxLayout" name="layout_tab_calibration">
+  <item>
+   <layout class="QHBoxLayout" name="layout_cal_buttons">
+    <item>
+     <widget class="QPushButton" name="btn_start_sas_cal">
+      <property name="text"><string>Start SAS Calibration (F105)</string></property>
+      <property name="minimumSize"><size><width>200</width><height>40</height></size></property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="btn_start_yaw_cal">
+      <property name="text"><string>Start Yaw Rate Calibration (F106)</string></property>
+      <property name="minimumSize"><size><width>200</width><height>40</height></size></property>
+     </widget>
+    </item>
+   </layout>
+  </item>
+  <item>
+   <widget class="QLabel" name="lbl_cal_status">
+    <property name="text"><string>Calibration status will appear here.</string></property>
+    <property name="minimumSize"><size><width>0</width><height>40</height></size></property>
+    <property name="alignment"><set>Qt::AlignLeft|Qt::AlignVCenter</set></property>
+   </widget>
+  </item>
+     <item>
+   <widget class="QProgressBar" name="progress_calibration">
+    <property name="minimum"><number>0</number></property>
+    <property name="maximum"><number>100</number></property>
+    <property name="value"><number>0</number></property>
+    <property name="textVisible"><bool>true</bool></property>
+    <property name="format"><string>Idle</string></property>
+   </widget>
+  </item>
+ </layout>
+</widget>
+
+     <!-- DTCs tab (FIXED: now inside QTabWidget) -->
+     <widget class="QWidget" name="tab_dtcs">
+      <attribute name="title"><string>DTCs</string></attribute>
+      <layout class="QVBoxLayout" name="layout_tab_dtcs">
+       <item>
+        <widget class="QTableWidget" name="dtc_table">
+         <property name="columnCount"><number>4</number></property>
+         <column><property name="text"><string>Code</string></property></column>
+         <column><property name="text"><string>Description</string></property></column>
+         <column><property name="text"><string>Status</string></property></column>
+            <column><property name="text"><string>Severity</string></property></column>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="layout_dtc_buttons">
+         <item>
+          <widget class="QPushButton" name="btn_read_dtcs">
+           <property name="text"><string>Read DTCs</string></property>
+              <property name="minimumSize"><size><width>120</width><height>40</height></size></property>
+           <property name="font"><font><pointsize>12</pointsize><bold>true</bold></font></property>
+           <property name="styleSheet"><string>background-color: yellow;</string></property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btn_clear_dtcs">
+           <property name="text"><string>Clear DTCs</string></property>
+              <property name="minimumSize"><size><width>120</width><height>40</height></size></property>
+           <property name="font"><font><pointsize>12</pointsize><bold>true</bold></font></property>
+           <property name="styleSheet"><string>background-color: lightgreen;</string></property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+
+    </widget> <!-- closes QTabWidget -->
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

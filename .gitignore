@@ -1,0 +1,40 @@
+# Python-specific ignores
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+build/
+dist/
+*.egg-info/
+*.egg
+
+# Virtual environment
+venv/
+env/
+can-env/
+.venv/
+
+# IDE and editor files
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# OS and local files
+.DS_Store
+Thumbs.db
+*.log
+
+# Project-specific ignores
+*.env
+*.bak
+*.swp
+*~
+
+# UI-generated files
+ui/*.py  # Python files generated from .ui files
+
+# CAN hardware configuration
+*.socketcan
+*.vcan
